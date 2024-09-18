@@ -2,10 +2,11 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { ClerkProvider } from '@clerk/clerk-react'
 import Home from "./pages/home/Home";
-import SignIn from "./pages/auth/SignIn";
 import Layout from "./components/common/Layout";
 import Dashboard from "./pages/dashboard/Dashboard";
+import SignInPage from "./pages/auth/SignIn";
 
 const router = createBrowserRouter([
   {
@@ -24,14 +25,23 @@ const router = createBrowserRouter([
   },
   {
     path: "/auth/sign-in",
-    element: <SignIn />,
+    element: <SignInPage />,
   },
 ]);
+
+
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+
+if (!PUBLISHABLE_KEY) {
+  throw new Error("Missing Publishable Key")
+}
 
 function App() {
 
   return (
-    <RouterProvider router={router} />
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+      <RouterProvider router={router} />
+    </ClerkProvider>
   )
 }
 
