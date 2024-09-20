@@ -1,6 +1,7 @@
 import { useUser } from '@clerk/clerk-react'
 import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
+import Header from './Header/Header'
 
 const Layout = () => {
 
@@ -13,7 +14,7 @@ const Layout = () => {
 
     return (
         <>
-            <h1>Header</h1>
+            <Header/>
             <Outlet/>
         </>
     )

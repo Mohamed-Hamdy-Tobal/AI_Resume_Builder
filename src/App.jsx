@@ -7,6 +7,7 @@ import Home from "./pages/home/Home";
 import Layout from "./components/common/Layout";
 import Dashboard from "./pages/dashboard/Dashboard";
 import SignInPage from "./pages/auth/SignIn";
+import './App.css'
 
 const router = createBrowserRouter([
   {
