@@ -8,6 +8,9 @@ import Layout from "./components/common/Layout";
 import Dashboard from "./pages/dashboard/Dashboard";
 import SignInPage from "./pages/auth/SignIn";
 import './App.css'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import EditResume from "./pages/edit/EditResume";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />
+      },
+      {
+        path: "/dashboard/resume/:resumeId/edit",
+        element: <EditResume />
       },
     ]
   },
@@ -42,6 +49,7 @@ function App() {
   return (
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
       <RouterProvider router={router} />
+      <ToastContainer />
     </ClerkProvider>
   )
 }
