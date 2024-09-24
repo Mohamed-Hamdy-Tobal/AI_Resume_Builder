@@ -7,7 +7,7 @@ const UserResumes = () => {
 
     const { userResume, loading } = userUserResume();
 
-    console.log("userResume: ", userResume)
+    // console.log("userResume: ", userResume)
 
     if (loading) {
         return <SkeletonCard/>
