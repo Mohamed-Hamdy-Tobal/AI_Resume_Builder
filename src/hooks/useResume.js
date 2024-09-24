@@ -34,7 +34,7 @@ export const useResume = () => {
             console.log("Response cart:", response)
             setData(response.data.data)
             setIsSuccess(true)
-            navigate(`/dashboard/resume/${formData.data.resumeid}/edit`)
+            navigate(`/dashboard/resume/${response.data.data.documentId}/edit`)
             // toast.success("Success Notification !");
             return response.data
         } catch (error) {
