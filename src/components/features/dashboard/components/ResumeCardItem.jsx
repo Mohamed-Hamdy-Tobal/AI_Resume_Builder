@@ -7,7 +7,7 @@ const ResumeCardItem = ({resume}) => {
     const navigate = useNavigate()
 
     const goToResume = () => {
-        navigate(`/dashboard/resume/${resume.resumeid}/edit`)
+        navigate(`/dashboard/resume/${resume.documentId}/edit`)
     }
 
     return (
