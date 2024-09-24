@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
-import PersonalDetailsPreview from './components/PersonalDetailsPreview'
+import PersonalDetailsPreview from './previewComponents/PersonalDetailsPreview'
 import { ResumeContext } from '@/context/ResumeContext'
-import SummaryPreview from './components/SummaryPreview'
-import ProfessionalExperiencesPreview from './components/ProfessionalExperiencesPreview'
-import SkillsPreview from './components/SkillsPreview'
-import EducationPreview from './components/EducationPreview'
+import SummaryPreview from './previewComponents/SummaryPreview'
+import ProfessionalExperiencesPreview from './previewComponents/ProfessionalExperiencesPreview'
+import SkillsPreview from './previewComponents/SkillsPreview'
+import EducationPreview from './previewComponents/EducationPreview'
 
 const PreviewSection = () => {
 
