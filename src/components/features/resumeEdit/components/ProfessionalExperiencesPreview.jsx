@@ -20,7 +20,7 @@ const ProfessionalExperiencesPreview = ({ resumeInfo }) => {
                         <h1 className='text-sm font-bold' style={{
                             color: resumeInfo?.themeColor
                         }}>{experience.title}</h1>
-                        <h2 className='text-xs flex justify-between items-center'>
+                        <h2 className='text-xs flex justify-start items-start sm:justify-between sm:items-center flex-wrap'>
                             {experience.companyName}, {experience.city}, {experience.state}
                             <span>{experience.startDate} - {experience.currentlyWorking ? "Present" : experience.endDate}</span>
                         </h2>

@@ -2,7 +2,7 @@ import React from 'react'
 
 const SkillsPreview = ({ resumeInfo }) => {
     return (
-        <div className='mt-5'>
+        <div className=''>
             <h1
                 className='font-bold text-sm text-center mb-2'
                 style={{

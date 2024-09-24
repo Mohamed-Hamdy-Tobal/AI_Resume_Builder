@@ -12,7 +12,7 @@ const PreviewSection = () => {
 
     return (
         <div 
-        className='flex flex-col shadow-lg h-full p-14 border-t-[20px]'
+        className='flex flex-col shadow-lg h-full p-9 md:p-14 border-t-[20px]'
         style={{
             borderColor: resumeInfo?.themeColor
         }}
