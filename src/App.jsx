@@ -11,6 +11,7 @@ import './App.css'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EditResume from "./pages/edit/EditResume";
+import { Toaster } from "./components/ui/toaster";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,7 @@ function App() {
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
       <RouterProvider router={router} />
       <ToastContainer />
+      <Toaster />
     </ClerkProvider>
   )
 }
