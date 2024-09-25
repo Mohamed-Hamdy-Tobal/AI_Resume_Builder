@@ -13,7 +13,7 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
                 {resumeInfo?.firstName} {resumeInfo?.lastName}
             </h1>
             <h2 className='font-medium text-sm text-center'>
-                {resumeInfo?.jobTitle}
+                {resumeInfo?.title}
             </h2>
             <p
                 className='font-normal text-xs text-center'

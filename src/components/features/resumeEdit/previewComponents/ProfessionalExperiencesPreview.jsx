@@ -15,7 +15,7 @@ const ProfessionalExperiencesPreview = ({ resumeInfo }) => {
                 borderColor: resumeInfo?.themeColor
             }} />
             <div className='mt-3'>
-                {resumeInfo?.experiences.map((experience, index) => (
+                {resumeInfo?.experiences?.map((experience, index) => (
                     <div key={index} className='my-5'>
                         <h1 className='text-sm font-bold' style={{
                             color: resumeInfo?.themeColor

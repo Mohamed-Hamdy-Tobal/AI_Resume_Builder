@@ -16,7 +16,7 @@ const EducationPreview = ({ resumeInfo }) => {
             }} />
 
             <div>
-                {resumeInfo?.education.map((education, index) => (
+                {resumeInfo?.education?.map((education, index) => (
                     <div key={index} className='my-5'>
                         <h1 className='text-sm font-bold' style={{
                             color: resumeInfo?.themeColor
