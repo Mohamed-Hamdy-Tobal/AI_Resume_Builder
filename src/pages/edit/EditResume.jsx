@@ -12,11 +12,14 @@ const EditResume = () => {
 
     const { resume, loading } = useGetResumeById(resumeId);
 
-    const [resumeInfo, setResumeInfo] = useState()
+    const [resumeInfo, setResumeInfo] = useState(null)
 
     useEffect(() => {
-        setResumeInfo(dummy)
-    }, [])
+        setResumeInfo({
+            ...dummy,
+            ...resume
+        })
+    }, [resume])
 
     // console.log("resume:", resume)
 
@@ -25,8 +28,8 @@ const EditResume = () => {
             <div className="edit-page py-10">
                 <div className="container">
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
-                        <FormSection />
-                        <PreviewSection />
+                        <FormSection resume={resume}/>
+                        <PreviewSection resume={resume}/>
                     </div>
                 </div>
             </div>
