@@ -1,7 +1,7 @@
 export default {
     "firstName": "John",
     "lastName": "Doe",
-    "jobTitle": "Software Engineer",
+    "title": "Software Engineer",
     "address": "1234 Elm Street, Springfield, IL 62704",
     "phone": "(555) 123-4567",
     "email": "john.doe@example.com",
