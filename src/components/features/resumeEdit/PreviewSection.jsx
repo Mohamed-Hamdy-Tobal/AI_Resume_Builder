@@ -6,7 +6,7 @@ import ProfessionalExperiencesPreview from './previewComponents/ProfessionalExpe
 import SkillsPreview from './previewComponents/SkillsPreview'
 import EducationPreview from './previewComponents/EducationPreview'
 
-const PreviewSection = () => {
+const PreviewSection = ({resume}) => {
 
     const {resumeInfo, setResumeInfo} = useContext(ResumeContext)
 
