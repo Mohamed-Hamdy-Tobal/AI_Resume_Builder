@@ -17,7 +17,7 @@ import Button from '@/components/common/Button'
 import { useParams } from 'react-router-dom'
 import { Textarea } from '@/components/ui/textarea'
 import { Brain } from 'lucide-react'
-import { AIchatSession } from '@/lib/AIModal'
+import { useGenerate } from '@/hooks/useGenerate'
 
 
 const FormSchema = z.object({
@@ -35,8 +35,7 @@ const SummaryForm = ({ setControls, resumeFetched }) => {
     const { resumeInfo, setResumeInfo } = useContext(ResumeContext)
 
     const { updateResume, isLoading, isSuccess } = useUpdateResume(resumeId)
-
-    const [loadingAI, setLoadingAI] = useState(false)
+    const { GenerateFormAI, isLoading: isLoadingAI, isSuccess: isSuccessAI, data: dataGenerated } = useGenerate()
 
     const form = useForm({
         resolver: zodResolver(FormSchema),
@@ -44,7 +43,7 @@ const SummaryForm = ({ setControls, resumeFetched }) => {
             summary: resumeInfo?.summary || "",
         },
     })
-    
+
     const { reset, watch } = form;
 
     const watchedValues = watch();
@@ -57,20 +56,18 @@ const SummaryForm = ({ setControls, resumeFetched }) => {
         updateResume(finalData)
     }
 
-    const GenerateSummaryFormAI = async () => {
-        setLoadingAI(true)
+    const GenerateSummaryFormAI = () => {
         const description = `Job Title is ${resumeInfo.title}. Based on this job title, generate a concise and professional summary for my resume. Avoid asking for additional information or suggestions, and provide only the summary.`;
-        console.log("description: ", description)
-        const results = await AIchatSession.sendMessage(description)
-        console.log(results.response.text())
-        setLoadingAI(false)
+        GenerateFormAI(description)
+    }
 
-        if (results)  {
+    useEffect(() => {
+        if (dataGenerated) {
             reset({
-                summary: results.response.text()
+                summary: dataGenerated
             });
         }
-    }
+    }, [dataGenerated,reset])
 
     useEffect(() => {
         const { summary } = resumeFetched || {};
@@ -117,7 +114,7 @@ const SummaryForm = ({ setControls, resumeFetched }) => {
                             <FormItem>
                                 <div className="flex justify-between items-center gap-3 flex-wrap">
                                     <FormLabel>Add Summary</FormLabel>
-                                    <Button isLoading={loadingAI} onClick={GenerateSummaryFormAI} type='button' variation={'outline-primary'} size='sm' className={'border-primary text-primary'}><Brain className='h-4 w-4' /> Generate from AI</Button>
+                                    <Button isLoading={isLoadingAI} onClick={GenerateSummaryFormAI} type='button' variation={'outline-primary'} size='sm' className={'border-primary text-primary'}><Brain className='h-4 w-4' /> Generate from AI</Button>
                                 </div>
                                 <FormControl>
                                     <Textarea
