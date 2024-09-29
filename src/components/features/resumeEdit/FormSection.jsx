@@ -17,8 +17,8 @@ const FormSection = ({resume}) => {
         {section: 4, active: false},
     ])
 
-    console.log("controls:",controls)
-    console.log("resume:",resume)
+    // console.log("controls:",controls)
+    // console.log("resume:",resume)
 
     return (
         <div>
@@ -26,19 +26,19 @@ const FormSection = ({resume}) => {
             <Controls controls={controls} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
 
             {/* Personal Details */}
-            {activeIndex === 1 && <PersonalDetailsForm setControls={setControls}/>}
+            {activeIndex === 1 && <PersonalDetailsForm setControls={setControls} resumeFetched={resume}/>}
 
             {/* Summary */}
-            {activeIndex === 2 && <SummaryForm setControls={setControls}/>}
+            {activeIndex === 2 && <SummaryForm setControls={setControls} resumeFetched={resume}/>}
 
             {/* Professional experiences */}
-            {activeIndex === 3 && <ExperiencesForm />}
+            {activeIndex === 3 && <ExperiencesForm setControls={setControls} resumeFetched={resume}/>}
 
             {/* Education */}
-            {activeIndex === 4 && <EducationForm />}
+            {activeIndex === 4 && <EducationForm setControls={setControls} resumeFetched={resume}/>}
 
             {/* Skills */}
-            {activeIndex === 5 && <SkillsForm />}
+            {activeIndex === 5 && <SkillsForm setControls={setControls} resumeFetched={resume}/>}
         </div>
     )
 }
