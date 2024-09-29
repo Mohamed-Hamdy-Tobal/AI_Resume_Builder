@@ -15,11 +15,12 @@ import {
 import { useUpdateResume } from '@/hooks/useUpdateResume'
 import Button from '@/components/common/Button'
 import { useParams } from 'react-router-dom'
-import { Textarea } from '@/components/ui/textarea'
 import { Input } from '@/components/ui/input'
-import { Trash } from 'lucide-react'
+import { Brain, Trash } from 'lucide-react'
 import ReachTextEditor from '@/components/common/ReachTextEditor'
 import isEqual from 'lodash.isequal';
+import { useGenerate } from '@/hooks/useGenerate'
+import { useToast } from "@/hooks/use-toast"
 
 const FormSchema = z.object({
     experiences: z.array(
@@ -40,10 +41,13 @@ const ExperiencesForm = ({ setControls, resumeFetched }) => {
 
     const { resumeId } = useParams()
 
+    const { toast } = useToast()
+
     const { resumeInfo, setResumeInfo } = useContext(ResumeContext)
 
 
     const { updateResume, isLoading, isSuccess } = useUpdateResume(resumeId)
+    const { GenerateFormAI, isLoading: isLoadingAI, isSuccess: isSuccessAI, data: dataGenerated } = useGenerate()
 
     const form = useForm({
         resolver: zodResolver(FormSchema),
@@ -51,10 +55,10 @@ const ExperiencesForm = ({ setControls, resumeFetched }) => {
             experiences: resumeInfo?.experiences || [],
         },
     })
-    const { reset, control, watch } = form;
+    const { control, getValues, setValue } = form;
 
     const watchedValues = useWatch({ control });
-    
+
     const { fields, append, remove } = useFieldArray({
         control,
         name: 'experiences'
@@ -82,6 +86,28 @@ const ExperiencesForm = ({ setControls, resumeFetched }) => {
         updateResume(finalData)
     }
 
+    const GenerateSummaryFormAI = (index) => {
+
+        const myTitle = form.getValues(`experiences.${index}.title`)
+
+        if (myTitle) {
+            const description = `Position Title is ${myTitle}. Based on this position title, give me 5-7 bullet points for my experience in the resume. Avoid asking for additional information or suggestions, and provide only the summary.`;
+            GenerateFormAI(description).then((data) => {
+                if (data) {
+                    const cleanData = data.replace(/```html|```/g, "");
+                    setValue(`experiences.${index}.workSummary`, cleanData);
+                }
+            });
+        } else {
+            toast({
+                title: "Please Add Position Title!",
+                description: "Your Input Title Is Empty"
+            })
+        }
+
+    }
+
+
     useEffect(() => {
         const { experiences } = resumeFetched || {};
 
@@ -101,7 +127,7 @@ const ExperiencesForm = ({ setControls, resumeFetched }) => {
     useEffect(() => {
         if (resumeInfo) {
             const hasChanges = !isEqual(watchedValues['experiences'], resumeInfo['experiences']);
-    
+
             if (hasChanges) {
                 console.log("CHANGE****");
                 setResumeInfo((prev) => ({
@@ -257,8 +283,20 @@ const ExperiencesForm = ({ setControls, resumeFetched }) => {
                                     };
 
                                     return (
-                                        <FormItem className='mt-3'>
-                                            <FormLabel>Work Summary</FormLabel>
+                                        <FormItem className='mt-5'>
+                                            <div className="flex justify-between items-center gap-3 flex-wrap">
+                                                <FormLabel>Work Summary</FormLabel>
+                                                <Button
+                                                    isLoading={isLoadingAI}
+                                                    onClick={() => GenerateSummaryFormAI(index)}
+                                                    type='button'
+                                                    variation={'outline-primary'}
+                                                    size='sm'
+                                                    className={'border-primary text-primary'}
+                                                >
+                                                    <Brain className='h-4 w-4' /> Generate from AI
+                                                </Button>
+                                            </div>
                                             <FormControl>
                                                 <ReachTextEditor value={workSummary} onChange={handleEditorChange} />
                                             </FormControl>
