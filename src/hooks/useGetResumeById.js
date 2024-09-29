@@ -14,7 +14,7 @@ const useGetResumeById = (id) => {
     useEffect(() => {
         const fetchResume = async () => {
             try {
-                const response = await api.get(`/api/user-resumes/${id}`);
+                const response = await api.get(`/api/user-resumes/${id}?populate=*`);
                 setResume(response.data.data);
             } catch (err) {
                 setError(err);

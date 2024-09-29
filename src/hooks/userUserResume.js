@@ -14,7 +14,7 @@ const userUserResume = () => {
     useEffect(() => {
         const fetchUserResumes = async () => {
             try {
-                const response = await api.get(`/api/user-resumes?filters[userEmail][$eq]=${user?.primaryEmailAddress.emailAddress}`);
+                const response = await api.get(`/api/user-resumes?populate=*?filters[userEmail][$eq]=${user?.primaryEmailAddress.emailAddress}`);
                 setUserResume(response.data.data);
             } catch (err) {
                 setError(err);
