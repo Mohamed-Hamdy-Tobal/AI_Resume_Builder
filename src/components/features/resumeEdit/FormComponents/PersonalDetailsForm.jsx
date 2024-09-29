@@ -1,5 +1,5 @@
 import { ResumeContext } from '@/context/ResumeContext'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import SectionFormLayout from './SectionFormLayout'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -39,11 +39,13 @@ const FormSchema = z.object({
     }),
 });
 
-const PersonalDetailsForm = ({ setControls }) => {
+const PersonalDetailsForm = ({ setControls, resumeFetched }) => {
 
     const { resumeId } = useParams()
 
     const { resumeInfo, setResumeInfo } = useContext(ResumeContext)
+
+    const [firstReset, setFirstReset] = useState(false)
 
     const { updateResume, isLoading, isSuccess } = useUpdateResume(resumeId)
 
@@ -59,7 +61,9 @@ const PersonalDetailsForm = ({ setControls }) => {
         },
     })
 
-    const { reset } = form;
+    const { reset, watch } = form;
+
+    const watchedValues = watch();
 
     function onSubmit(data) {
         const finalData = {
@@ -80,13 +84,14 @@ const PersonalDetailsForm = ({ setControls }) => {
                 phone: resumeInfo.phone || "",
                 email: resumeInfo.email || "",
             });
+            setFirstReset(true)
         }
     }, [resumeInfo, reset]);
 
     useEffect(() => {
-        const { firstName, lastName, title, address, phone, email } = resumeInfo || {};
-        
+        const { firstName, lastName, title, address, phone, email } = resumeFetched || {};
         const allFieldsFilled = firstName && lastName && title && address && phone && email;
+
         if (isSuccess || allFieldsFilled) {
             setControls((prevControls) => [
                 { ...prevControls[0], active: true },
@@ -94,6 +99,21 @@ const PersonalDetailsForm = ({ setControls }) => {
             ]);
         }
     }, [resumeInfo, isSuccess, setControls])
+
+    useEffect(() => {
+        if (resumeInfo) {
+            const hasChanges = Object.keys(watchedValues).some(
+                (key) => watchedValues[key] != resumeInfo[key]
+            );
+            if (hasChanges && firstReset) {
+                setResumeInfo({
+                    ...resumeInfo,
+                    ...watchedValues,
+                });
+            }
+        }
+    }, [watchedValues, resumeInfo, setResumeInfo]);
+
 
 
     return (
