@@ -10,26 +10,26 @@ export default {
     "experiences": [
         {
             "id": 1,
-            "title": "Senior Software Engineer",
-            "companyName": "Tech Solutions Inc.",
-            "city": "New York",
-            "state": "NY",
-            "startDate": "2019-05-01",
+            "title": "Senior Developer",
+            "companyName": "Company A",
+            "city": "City X",
+            "state": "State Y",
+            "startDate": "2020-01-15",
             "endDate": "2023-09-01",
             "currentlyWorking": true,
-            "workSummary": "Led a team of developers to build a high-performance e-commerce platform, improving scalability and enhancing user experience."
+            "workSummary": "Led multiple projects, driving improvements in code quality and system efficiency. Collaborated with cross-functional teams to deliver high-performance applications."
         },
         {
             "id": 2,
             "title": "Software Engineer",
-            "companyName": "Innovate Labs",
-            "city": "San Francisco",
-            "state": "CA",
-            "startDate": "2016-08-01",
-            "endDate": "2019-04-01",
+            "companyName": "Company B",
+            "city": "City Z",
+            "state": "State W",
+            "startDate": "2017-06-01",
+            "endDate": "2020-01-10",
             "currentlyWorking": false,
-            "workSummary": "Developed microservices architecture and contributed to the design of APIs that reduced system response time by 30%."
-        }
+            "workSummary": "Worked on the development of microservices and improved API performance, leading to a 30% reduction in response times."
+        },
     ],
     "education": [
         {
