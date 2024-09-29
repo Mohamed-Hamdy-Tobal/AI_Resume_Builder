@@ -8,11 +8,11 @@ import EducationPreview from './previewComponents/EducationPreview'
 
 const PreviewSection = ({resume}) => {
 
-    const {resumeInfo, setResumeInfo} = useContext(ResumeContext)
+    const {resumeInfo} = useContext(ResumeContext)
 
     return (
         <div 
-        className='flex flex-col shadow-lg h-full p-9 md:p-14 border-t-[20px]'
+        className='flex flex-col shadow-lg p-9 md:p-14 border-t-[20px] w-full'
         style={{
             borderColor: resumeInfo?.themeColor
         }}
