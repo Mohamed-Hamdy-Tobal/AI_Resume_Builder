@@ -2,6 +2,7 @@ import dummy from '@/data/dummy'
 import { formatDate } from '@/utils/formatDate'
 import { hasTruthyValue } from '@/utils/hasTruthyValue'
 import React from 'react'
+import './style.css'
 
 const ProfessionalExperiencesPreview = ({ resumeInfo }) => {
 
@@ -42,7 +43,7 @@ const ProfessionalExperiencesPreview = ({ resumeInfo }) => {
                                     </span>
                                 </h2>)}
                             {/* <p className='text-xs my-2'>{experience.workSummary}</p> */}
-                            {experience.workSummary && (<div className='mt-1 text-sm' dangerouslySetInnerHTML={{ __html: experience.workSummary }} />)}
+                            {experience.workSummary && (<div className='mt-1 text-sm refactor-summary' dangerouslySetInnerHTML={{ __html: experience.workSummary }} />)}
                         </div>
                     )
                 })}
