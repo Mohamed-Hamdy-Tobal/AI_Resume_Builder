@@ -15,15 +15,15 @@ export const useGenerate = () => {
 
         try {
             const response = await AIchatSession.sendMessage(description)
-            console.log("Response cart:", response.response.text())
+            console.log("Response :", response.response.text())
             setData(response.response.text())
             setIsSuccess(true)
-            return response
+            return response.response.text()
         } catch (error) {
             setIsLoading(false)
             setIsError(true)
             console.error('Failed to add to cart', error)
-            toast.error("Error When Create!")
+            toast.error("Error When Generate!")
             return Promise.reject(error)
         } finally {
             setIsLoading(false)
