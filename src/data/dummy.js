@@ -14,7 +14,7 @@ export default {
             "companyName": "Tech Solutions Inc.",
             "city": "New York",
             "state": "NY",
-            "startDate": "May 2019",
+            "startDate": "2019-05-01",
             "endDate": "2023-09-01",
             "currentlyWorking": true,
             "workSummary": "Led a team of developers to build a high-performance e-commerce platform, improving scalability and enhancing user experience."
@@ -25,8 +25,8 @@ export default {
             "companyName": "Innovate Labs",
             "city": "San Francisco",
             "state": "CA",
-            "startDate": "August 2016",
-            "endDate": "April 2019",
+            "startDate": "2016-08-01",
+            "endDate": "2019-04-01",
             "currentlyWorking": false,
             "workSummary": "Developed microservices architecture and contributed to the design of APIs that reduced system response time by 30%."
         }
@@ -36,8 +36,8 @@ export default {
             "id": 1,
             "title": "Bachelor of Science in Computer Science",
             "universityName": "University of California, Berkeley",
-            "startDate": "September 2012",
-            "endDate": "June 2017",
+            "startDate": "2012-09-01",
+            "endDate": "2017-06-01",
             "degree": "B.Sc.",
             "major": "Computer Science",
             "description": "Graduated with honors, focusing on algorithms, data structures, and software development."
