@@ -28,11 +28,11 @@ const FormSchema = z.object({
         })
 });
 
-const SummaryForm = ({ setControls }) => {
+const SummaryForm = ({ setControls, resumeFetched }) => {
 
     const { resumeId } = useParams()
 
-    const { resumeInfo } = useContext(ResumeContext)
+    const { resumeInfo, setResumeInfo } = useContext(ResumeContext)
 
     const { updateResume, isLoading, isSuccess } = useUpdateResume(resumeId)
 
@@ -44,7 +44,10 @@ const SummaryForm = ({ setControls }) => {
             summary: resumeInfo?.summary || "",
         },
     })
-    const { reset } = form;
+    
+    const { reset, watch } = form;
+
+    const watchedValues = watch();
 
     function onSubmit(data) {
         const finalData = {
@@ -70,7 +73,7 @@ const SummaryForm = ({ setControls }) => {
     }
 
     useEffect(() => {
-        const { summary } = resumeInfo || {};
+        const { summary } = resumeFetched || {};
 
         if (isSuccess || summary) {
             setControls((prevControls) => {
@@ -83,6 +86,19 @@ const SummaryForm = ({ setControls }) => {
             });
         }
     }, [resumeInfo, isSuccess, setControls]);
+
+    useEffect(() => {
+        if (resumeInfo) {
+            const hasChanges = watchedValues['summary'] !== resumeInfo['summary']
+
+            if (hasChanges) {
+                setResumeInfo({
+                    ...resumeInfo,
+                    ...watchedValues,
+                });
+            }
+        }
+    }, [watchedValues, resumeInfo, setResumeInfo]);
 
 
     return (
