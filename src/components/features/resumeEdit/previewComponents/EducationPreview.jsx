@@ -7,8 +7,6 @@ const EducationPreview = ({ resumeInfo }) => {
 
     const customEducation = resumeInfo?.education.length > 0 ? resumeInfo : dummy
 
-    console.log("customEducation:", customEducation)
-
     return (
         <div>
             <h1

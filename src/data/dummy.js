@@ -46,22 +46,22 @@ export default {
     "skills": [
         {
             "id": 1,
-            "name": "JavaScript",
+            "title": "JavaScript",
             "rating": 90
         },
         {
             "id": 2,
-            "name": "React",
+            "title": "React",
             "rating": 70
         },
         {
             "id": 3,
-            "name": "Node.js",
+            "title": "Node.js",
             "rating": 65
         },
         {
             "id": 4,
-            "name": "Python",
+            "title": "Python",
             "rating": 50
         }
     ]
