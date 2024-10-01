@@ -3,3 +3,9 @@
     flex-direction: column;
     gap: 8px;
 }
+.react-stars {
+    padding-top: 18px !important;
+}
+.react-stars > span {
+    font-size: 38px !important;
+}
