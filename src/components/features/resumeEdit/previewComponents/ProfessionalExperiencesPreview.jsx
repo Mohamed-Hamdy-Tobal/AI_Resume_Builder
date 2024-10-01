@@ -8,8 +8,6 @@ const ProfessionalExperiencesPreview = ({ resumeInfo }) => {
 
     const customExperiences = resumeInfo?.experiences.length > 0 ? resumeInfo : dummy
 
-    console.log("customExperiences:", customExperiences)
-
     return (
         <div className='mt-5'>
             <h1
