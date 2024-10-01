@@ -150,7 +150,7 @@ const ExperiencesForm = ({ setControls, resumeFetched }) => {
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
 
                     {fields.map((experience, index) => (
-                        <div key={experience.id}>
+                        <div key={experience.id} className='p-3 border border-gray-300 rounded-md'>
                             <div className="flex justify-end items-center mb-2">
                                 <Button
                                     variation='danger'
