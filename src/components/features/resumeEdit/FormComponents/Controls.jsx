@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
-import { ArrowLeft, ArrowRight, LayoutGrid } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Home, LayoutGrid } from 'lucide-react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Controls = ({ activeIndex, setActiveIndex, controls }) => {
 
@@ -13,21 +14,26 @@ const Controls = ({ activeIndex, setActiveIndex, controls }) => {
 
     // Global Disabled Next Button
     const ok = controls
-        .filter(control => control.section === activeIndex)  
-        .map(control => control.active)[0];  
+        .filter(control => control.section === activeIndex)
+        .map(control => control.active)[0];
 
     return (
         <div className='flex items-center justify-between mb-7'>
-            <Button variant="outline" className='flex gap-2' size="sm"> <LayoutGrid /> Theme</Button>
+            <div className="flex justify-start items-center gap-3">
+                <Link to={'/dashboard'}>
+                    <Button className='py-5 px-3' size="sm"> <Home /></Button>
+                </Link>
+                <Button variant="outline" className='flex gap-2' size="sm"> <LayoutGrid /> Theme</Button>
+            </div>
             <div className="prev-next flex justify-start items-center gap-3">
                 {activeIndex > 1 && <Button className='flex gap-2' size="sm" onClick={prevActive}><ArrowLeft /></Button>}
-                {activeIndex < 5 && <Button
+                <Button
                     className='flex gap-2'
                     size="sm"
                     onClick={nextActive}
                     disabled={!ok}
                 >Next <ArrowRight />
-                </Button>}
+                </Button>
             </div>
         </div>
     )

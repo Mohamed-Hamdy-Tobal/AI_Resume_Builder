@@ -12,6 +12,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EditResume from "./pages/edit/EditResume";
 import { Toaster } from "./components/ui/toaster";
+import ResumeViewPage from "./pages/view/ResumeViewPage";
 
 const router = createBrowserRouter([
   {
@@ -29,12 +30,16 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/resume/:resumeId/edit",
         element: <EditResume />
-      },
+      }
     ]
   },
   {
     path: "/auth/sign-in",
     element: <SignInPage />,
+  },
+  {
+    path: "/my-resume/:resumeId/view",
+    element: <ResumeViewPage />
   },
 ]);
 

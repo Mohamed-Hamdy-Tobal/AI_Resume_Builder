@@ -10,15 +10,15 @@ const EducationPreview = ({ resumeInfo }) => {
     return (
         <div>
             <h1
-                className='font-bold text-sm text-center mb-2'
+                className='font-bold text-[12px] sm:text-sm text-center mb-2'
                 style={{
-                    color: resumeInfo?.themeColor
+                    color: resumeInfo?.themeColor ? resumeInfo?.themeColor: "#000"
                 }}
             >
                 Education
             </h1>
             <hr style={{
-                borderColor: resumeInfo?.themeColor
+                borderColor: resumeInfo?.themeColor ? resumeInfo?.themeColor: "#000"
             }} />
 
             <div>
@@ -27,14 +27,14 @@ const EducationPreview = ({ resumeInfo }) => {
                     if (!toShow) return null
                     return (
                         <div key={index} className='my-5'>
-                            <h1 className='text-sm font-bold' style={{
-                                color: resumeInfo?.themeColor
+                            <h1 className='text-[12px] sm:text-sm font-bold' style={{
+                                color: resumeInfo?.themeColor ? resumeInfo?.themeColor: "#000"
                             }}>{education.universityName}</h1>
-                            <p className='text-xs flex justify-between items-center'>
-                                {education.degree} {education.major && "in"} {education.major}
-                                <span>{formatDate(education.startDate)} {education.endDate && "-"} {formatDate(education.endDate)}</span>
+                            <p className='text-[10px] sm:text-xs flex justify-between items-start gap-2'>
+                                <span className='flex-1'>{education.degree} {education.major && "in"} {education.major}</span>
+                                <span className='flex-1 flex justify-end'>{formatDate(education.startDate)} {education.endDate && "-"} {formatDate(education.endDate)}</span>
                             </p>
-                            <p className='text-xs my-2'>{education.description}</p>
+                            <p className='text-[10px] sm:text-xs my-2'>{education.description}</p>
                         </div>
                     )
                 })}

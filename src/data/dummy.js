@@ -47,22 +47,22 @@ export default {
         {
             "id": 1,
             "title": "JavaScript",
-            "rating": 90
+            "rating": 3
         },
         {
             "id": 2,
             "title": "React",
-            "rating": 70
+            "rating": 2.5
         },
         {
             "id": 3,
             "title": "Node.js",
-            "rating": 65
+            "rating": 4
         },
         {
             "id": 4,
             "title": "Python",
-            "rating": 50
+            "rating": 5
         }
     ]
 }

@@ -5,6 +5,7 @@ import ExperiencesForm from './FormComponents/ExperiencesForm'
 import EducationForm from './FormComponents/EducationForm'
 import SkillsForm from './FormComponents/SkillsForm'
 import Controls from './FormComponents/Controls'
+import { Navigate } from 'react-router-dom'
 
 const FormSection = ({resume}) => {
 
@@ -15,9 +16,11 @@ const FormSection = ({resume}) => {
         {section: 2, active: false},
         {section: 3, active: false},
         {section: 4, active: false},
+        {section: 5, active: false},
     ])
 
     // console.log("controls:",controls)
+    // console.log("activeIndex:",activeIndex)
     // console.log("resume:",resume)
 
     return (
@@ -39,6 +42,9 @@ const FormSection = ({resume}) => {
 
             {/* Skills */}
             {activeIndex === 5 && <SkillsForm setControls={setControls} resumeFetched={resume}/>}
+
+            {/* View Resume */}
+            {activeIndex === 6 && <Navigate to={`/my-resume/${resume.documentId}/view`}/>}
         </div>
     )
 }

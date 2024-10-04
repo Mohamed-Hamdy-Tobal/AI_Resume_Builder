@@ -3,7 +3,6 @@ import SkeletonResume from '@/components/features/resumeEdit/components/Skeleton
 import FormSection from '@/components/features/resumeEdit/FormSection'
 import PreviewSection from '@/components/features/resumeEdit/PreviewSection'
 import { ResumeContext } from '@/context/ResumeContext'
-import dummy from '@/data/dummy'
 import useGetResumeById from '@/hooks/useGetResumeById'
 import { useParams } from 'react-router-dom'
 
@@ -18,15 +17,13 @@ const EditResume = () => {
     useEffect(() => {
         if (resume) {
             setResumeInfo({
-                ...dummy,
                 ...resume,
+                "themeColor": "#3498db",
             })
         }
     }, [resume])
 
     console.log("resume:", resume)
-    // console.log("loading:", loading)
-    // console.log("resumeInfo:", resumeInfo)
 
     return (
         <ResumeContext.Provider value={{ resumeInfo, setResumeInfo }}>

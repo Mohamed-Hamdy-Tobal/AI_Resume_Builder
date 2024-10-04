@@ -37,14 +37,14 @@ const AddResume = () => {
     }
 
     return (
-        <div>
+        <div className='min-h-[185px] xl:min-h-[278.44px] h-full'>
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 <DialogTrigger asChild>
                     <div
                         className="
                 flex justify-center 
                 items-center border-[2px] rounded-md 
-                bg-secondary p-14 py-24 h-[280px] 
+                bg-secondary p-14 py-24 h-full
                 cursor-pointer hover:scale-105 transition-all 
                 hover:shadow-md border-dashed border-[#bcbcbc]
                 "
