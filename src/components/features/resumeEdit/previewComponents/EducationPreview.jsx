@@ -12,13 +12,13 @@ const EducationPreview = ({ resumeInfo }) => {
             <h1
                 className='font-bold text-[12px] sm:text-sm text-center mb-2'
                 style={{
-                    color: resumeInfo?.themeColor ? resumeInfo?.themeColor: "#000"
+                    color: resumeInfo?.resume_theme ? resumeInfo?.resume_theme: "#000"
                 }}
             >
                 Education
             </h1>
             <hr style={{
-                borderColor: resumeInfo?.themeColor ? resumeInfo?.themeColor: "#000"
+                borderColor: resumeInfo?.resume_theme ? resumeInfo?.resume_theme: "#000"
             }} />
 
             <div>
@@ -28,7 +28,7 @@ const EducationPreview = ({ resumeInfo }) => {
                     return (
                         <div key={index} className='my-5'>
                             <h1 className='text-[12px] sm:text-sm font-bold' style={{
-                                color: resumeInfo?.themeColor ? resumeInfo?.themeColor: "#000"
+                                color: resumeInfo?.resume_theme ? resumeInfo?.resume_theme: "#000"
                             }}>{education.universityName}</h1>
                             <p className='text-[10px] sm:text-xs flex justify-between items-start gap-2'>
                                 <span className='flex-1'>{education.degree} {education.major && "in"} {education.major}</span>

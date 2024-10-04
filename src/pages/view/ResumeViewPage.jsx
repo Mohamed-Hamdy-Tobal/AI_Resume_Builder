@@ -1,13 +1,14 @@
 import React, { useRef } from 'react'
 import SkeletonResume from '@/components/features/resumeEdit/components/SkeletonResume'
 import useGetResumeById from '@/hooks/useGetResumeById'
-import { useLocation, useParams } from 'react-router-dom'
+import { Navigate, useLocation, useParams } from 'react-router-dom'
 import ViewSection from '@/components/features/view/ViewSection'
 import { Button } from '@/components/ui/button'
 import Header from '@/components/common/Header/Header'
 import { useReactToPrint } from 'react-to-print'
 import { RWebShare } from "react-web-share";
 import { ShareIcon } from 'lucide-react'
+import { useUser } from '@clerk/clerk-react'
 
 const ResumeViewPage = () => {
 
@@ -22,6 +23,14 @@ const ResumeViewPage = () => {
     const { pathname } = location;
 
     const BASE_URL = import.meta.env.VITE_BASE_URL
+
+    console.log("resume:",resume)
+
+    const user = useUser()
+
+    if (!user.isSignedIn && user.isLoaded) {
+        return <Navigate to={'/auth/sign-in'}/>
+    }
 
     return (
         <div className="view-page">

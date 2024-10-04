@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { ArrowLeft, ArrowRight, Home, LayoutGrid } from 'lucide-react'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ThemeColor from './ThemeColor'
 
 const Controls = ({ activeIndex, setActiveIndex, controls }) => {
 
@@ -23,7 +24,7 @@ const Controls = ({ activeIndex, setActiveIndex, controls }) => {
                 <Link to={'/dashboard'}>
                     <Button className='py-5 px-3' size="sm"> <Home /></Button>
                 </Link>
-                <Button variant="outline" className='flex gap-2' size="sm"> <LayoutGrid /> Theme</Button>
+                <ThemeColor/>
             </div>
             <div className="prev-next flex justify-start items-center gap-3">
                 {activeIndex > 1 && <Button className='flex gap-2' size="sm" onClick={prevActive}><ArrowLeft /></Button>}

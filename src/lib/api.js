@@ -3,7 +3,13 @@ import axios from 'axios';
 const apiKey = import.meta.env.VITE_STRAPI_API_KEY
 
 // Create an Axios instance
+export const axiosApi = axios.create({
+    // baseURL: 'https://airesumebuilderbe-production.up.railway.app',
+    baseURL: 'http://localhost:1337',
+    headers: { 'Content-Type': 'application/json' },
+});
 const api = axios.create({
+    // baseURL: 'https://airesumebuilderbe-production.up.railway.app',
     baseURL: 'http://localhost:1337',
     headers: { 'Content-Type': 'application/json' },
     headers: {

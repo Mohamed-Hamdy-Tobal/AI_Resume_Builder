@@ -5,6 +5,8 @@ import PreviewSection from '@/components/features/resumeEdit/PreviewSection'
 import { ResumeContext } from '@/context/ResumeContext'
 import useGetResumeById from '@/hooks/useGetResumeById'
 import { useParams } from 'react-router-dom'
+import { useUser } from '@clerk/clerk-react'
+import LoadingSpinner from '@/components/common/LoadingSpinner'
 
 const EditResume = () => {
 
@@ -18,12 +20,29 @@ const EditResume = () => {
         if (resume) {
             setResumeInfo({
                 ...resume,
-                "themeColor": "#3498db",
+                resume_theme: resume?.resume_theme ? resume?.resume_theme : "#000"
             })
         }
     }, [resume])
 
     console.log("resume:", resume)
+
+    const { user } = useUser()
+
+    if (loading || !resume) {
+        return <LoadingSpinner/>
+    }
+
+    if (user?.primaryEmailAddress.emailAddress !== resume?.userEmail) {
+        return (
+            <div className='flex justify-center items-center gap-3 flex-col min-h-[calc(100vh-63px)]'>
+                <div className="image max-w-[500px]">
+                    <img src='/imgs/not-found.png' alt='Page Not Found' className="w-full h-auto" />
+                </div>
+                <h1 className="text-xl font-semibold">This Page not found</h1>
+            </div>
+        )
+    }
 
     return (
         <ResumeContext.Provider value={{ resumeInfo, setResumeInfo }}>

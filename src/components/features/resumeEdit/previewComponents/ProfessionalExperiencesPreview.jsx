@@ -13,13 +13,13 @@ const ProfessionalExperiencesPreview = ({ resumeInfo }) => {
             <h1
                 className='font-bold text-[12px] sm:text-sm text-center mb-2'
                 style={{
-                    color: resumeInfo?.themeColor ? resumeInfo?.themeColor: "#000"
+                    color: resumeInfo?.resume_theme ? resumeInfo?.resume_theme: "#000"
                 }}
             >
                 Professional Experiences
             </h1>
             <hr style={{
-                borderColor: resumeInfo?.themeColor ? resumeInfo?.themeColor: "#000"
+                borderColor: resumeInfo?.resume_theme ? resumeInfo?.resume_theme: "#000"
             }} />
             <div className='mt-3'>
                 {customExperiences?.experiences?.map((experience, index) => {
@@ -28,7 +28,7 @@ const ProfessionalExperiencesPreview = ({ resumeInfo }) => {
                     return (
                         <div key={index} className='my-5'>
                             {experience.title && (<h1 className='text-[12px] sm:text-sm font-bold' style={{
-                                color: resumeInfo?.themeColor ? resumeInfo?.themeColor: "#000"
+                                color: resumeInfo?.resume_theme ? resumeInfo?.resume_theme: "#000"
                             }}>{experience.title}</h1>)}
                             {(experience.companyName
                                 || experience.city

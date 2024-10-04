@@ -10,11 +10,13 @@ const PreviewSection = ({resume}) => {
 
     const {resumeInfo} = useContext(ResumeContext)
 
+    console.log("resumeInfo:",resumeInfo)
+
     return (
         <div 
         className='flex flex-col shadow-lg p-9 md:p-14 border-t-[20px] w-full'
         style={{
-            borderColor: resumeInfo?.themeColor
+            borderColor: resumeInfo?.resume_theme ? resumeInfo?.resume_theme: "#000"
         }}
         >
             {/* Personal Data */}

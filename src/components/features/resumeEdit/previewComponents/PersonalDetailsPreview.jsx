@@ -7,7 +7,7 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
             <h1
                 className='font-bold text-lg sm:text-xl text-center'
                 style={{
-                    color: resumeInfo?.themeColor ? resumeInfo?.themeColor: "#000"
+                    color: resumeInfo?.resume_theme ? resumeInfo?.resume_theme: "#000"
                 }}
             >
                 {resumeInfo?.firstName} {resumeInfo?.lastName}
@@ -20,7 +20,7 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
             <p
                 className='font-normal text-[10px] sm:text-xs text-center'
                 style={{
-                    color: resumeInfo?.themeColor ? resumeInfo?.themeColor: "#000"
+                    color: resumeInfo?.resume_theme ? resumeInfo?.resume_theme: "#000"
                 }}
             >
                 {resumeInfo?.address}
@@ -28,20 +28,20 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
             </p>
             <div className='flex justify-between items-center pt-2'>
                 <h2 className='font-normal text-[10px] sm:text-xs' style={{
-                    color: resumeInfo?.themeColor ? resumeInfo?.themeColor: "#000"
+                    color: resumeInfo?.resume_theme ? resumeInfo?.resume_theme: "#000"
                 }}>
                     {resumeInfo?.phone}
                     {!resumeInfo?.phone && "Add You'r Phone"}
                 </h2>
                 <h2 className='font-normal text-[10px] sm:text-xs' style={{
-                    color: resumeInfo?.themeColor ? resumeInfo?.themeColor: "#000"
+                    color: resumeInfo?.resume_theme ? resumeInfo?.resume_theme: "#000"
                 }}>
                     {resumeInfo?.email}
                     {!resumeInfo?.email && "Add You'r Phone"}
                 </h2>
             </div>
             <hr className='border-[1.5px] my-2' style={{
-                borderColor: resumeInfo?.themeColor ? resumeInfo?.themeColor: "#000"
+                borderColor: resumeInfo?.resume_theme ? resumeInfo?.resume_theme: "#000"
             }} />
         </div>
     )

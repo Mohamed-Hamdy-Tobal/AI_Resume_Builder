@@ -58,3 +58,45 @@ export const useUpdateResume = (id) => {
 
     return { updateResume, isLoading, isSuccess, isError, data }
 }
+
+export const useDeleteResume = (refetch) => {
+
+    const { toast } = useToast()
+
+    const [isLoading, setIsLoading] = useState(false)
+    const [isSuccess, setIsSuccess] = useState(false)
+    const [isError, setIsError] = useState(false)
+
+    const deleteResume = async (id) => {
+
+        setIsLoading(true)
+
+        try {
+            const response = await api.delete(`/api/user-resumes/${id}/`)
+            console.log("Response cart:", response)
+            setIsSuccess(true)
+            if (refetch) {
+                refetch(); // Trigger data re-fetch
+            }
+            toast({
+                title: "Successfully Delete!",
+                description: "Your resume has been deleted successfully",
+            })
+            return response.data
+        } catch (error) {
+            setIsLoading(false)
+            setIsError(true)
+            console.error('Failed to add to cart', error)
+            toast({
+                variant: "destructive",
+                title: "Uh oh! Something went wrong.",
+                description: "There was a problem with your request.",
+            })
+            return Promise.reject(error)
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
+    return { deleteResume, isLoading, isSuccess, isError }
+}

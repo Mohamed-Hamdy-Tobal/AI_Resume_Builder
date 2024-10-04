@@ -11,7 +11,7 @@ const ViewSection = ({resume}) => {
         <div 
         className='flex flex-col shadow-lg p-9 md:p-14 border-t-[20px] w-full'
         style={{
-            borderColor: resume?.themeColor ? resume?.themeColor: "#000"
+            borderColor: resume?.resume_theme ? resume?.resume_theme: "#000"
         }}
         >
             {/* Personal Data */}
