@@ -19,6 +19,7 @@ const SignInPage = () => {
                     src="/imgs/resume-bg.jpg"
                     alt="Image"
                     className="h-full w-full object-cover"
+                    loading="lazy"
                 />
                 <h1 className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] w-full text-white text-[40px] p-[30px] font-bold">Build a professional Resume with <span className="text-primary">AI</span></h1>
             </div>
