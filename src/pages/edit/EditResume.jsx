@@ -7,6 +7,7 @@ import useGetResumeById from '@/hooks/useGetResumeById'
 import { useParams } from 'react-router-dom'
 import { useUser } from '@clerk/clerk-react'
 import LoadingSpinner from '@/components/common/LoadingSpinner'
+import AuthLayout from '@/components/common/AuthLayout'
 
 const EditResume = () => {
 
@@ -45,18 +46,20 @@ const EditResume = () => {
     }
 
     return (
-        <ResumeContext.Provider value={{ resumeInfo, setResumeInfo }}>
-            <div className="edit-page py-10">
-                <div className="container">
-                    <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
-                        <FormSection resume={resume} />
-                        <div className='flex justify-start items-start h-full w-full'>
-                            {loading || !resume ? <SkeletonResume /> : <PreviewSection resume={resume} />}
+        <AuthLayout>
+            <ResumeContext.Provider value={{ resumeInfo, setResumeInfo }}>
+                <div className="edit-page py-10">
+                    <div className="container">
+                        <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
+                            <FormSection resume={resume} />
+                            <div className='flex justify-start items-start h-full w-full'>
+                                {loading || !resume ? <SkeletonResume /> : <PreviewSection resume={resume} />}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </ResumeContext.Provider>
+            </ResumeContext.Provider>
+        </AuthLayout>
     )
 }
 
