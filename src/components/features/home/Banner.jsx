@@ -1,9 +1,13 @@
 import { Button } from '@/components/ui/button'
+import { useUser } from '@clerk/clerk-react'
 import { ArrowRight, VideoIcon } from 'lucide-react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Banner = () => {
+
+    const user = useUser()
+
     return (
         <div class="h-[calc(100vh-62px)] flex flex-col justify-between items-center py-[100px] pb-[200px]">
             <div className="flex justify-center items-center">
@@ -17,7 +21,7 @@ const Banner = () => {
                 <h1 className='text-[25px] sm:text-[50px] font-bold mb-2 sm:mb-0'>Build Your Resume With <span className='text-primary'>AI</span></h1>
                 <p className='text-gray-400 text-[14px] sm:text-[16px]'>Effortlessly Craft a Standout Resume with Our AI-Powered Builder</p>
                 <div className='flex justify-center items-center gap-3 mt-8 flex-wrap w-full'>
-                    <Link to={'/auth/sign-in'}><Button>Get Started</Button></Link>
+                    <Link to={user.isSignedIn?'/dashboard':"/auth/sign-in"}><Button>Get Started</Button></Link>
                     <Button variant='outline'><VideoIcon className='mr-1'/> Watch video</Button>
                 </div>
             </div>
