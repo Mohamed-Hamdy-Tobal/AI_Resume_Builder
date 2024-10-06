@@ -1,0 +1,25 @@
+.authentication form button{
+    background-color: #9f5bff;
+    border: none;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.authentication .cl-internal-1r7rnyr {
+    background-color: transparent !important;
+}
+.authentication form button::after{
+    display: none !important;
+}
+.authentication form button:hover{
+    background-color: #9f5bffc3;
+}
+.authentication .cl-internal-1pr5xvn > h1 {
+    color: #9f5bff;
+}
+.authentication .cl-footerActionLink,
+.authentication .cl-internal-1c7fjmu {
+    color: #9f5bff;
+}
+.cl-internal-4x6jej {
+    display: none !important;
+}

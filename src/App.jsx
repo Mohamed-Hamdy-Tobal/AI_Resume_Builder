@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import EditResume from "./pages/edit/EditResume";
 import { Toaster } from "./components/ui/toaster";
 import ResumeViewPage from "./pages/view/ResumeViewPage";
+import SignUpPage from "./pages/auth/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "/auth/sign-in",
     element: <SignInPage />,
+  },
+  {
+    path: "/auth/sign-up",
+    element: <SignUpPage />,
   },
   {
     path: "/my-resume/:resumeId/view",
