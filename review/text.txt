@@ -1,4 +1,0 @@
-- Vite
-- Tailwind
-- Shadcn
-- react-router-dom
